@@ -18,6 +18,7 @@ body {
   border-radius: 20px;
   border: 0px;
   padding: 15px;
+  font-size: 25px;
 }
 .buttons {
   background-color: #222222;
@@ -35,4 +36,5 @@ body {
 }
 .buttons:hover {
   transform: scale(1.2, 1.2);
+  background-color: #111111;
 }
