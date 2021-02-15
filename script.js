@@ -10,6 +10,7 @@ for (let i = 1; i <= 16; i++) {
   }
 }
 document.querySelector("#divsContainer").innerHTML = div;
+//generator divów
 const buttons = document.querySelectorAll(".buttons");
 let textPool = document.querySelector("#textPool");
 const pools = [];
@@ -25,6 +26,11 @@ let equation = [];
 let numbersOfEquation = [];
 let score = "";
 let equationConnectionNumbers = [];
+let ActionResult = [];
+let result = 0;
+let result1 = 0;
+// let resultBack = [];
+
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     pools.push(button);
@@ -39,96 +45,155 @@ buttons.forEach((button) => {
         }
       }
     }
-    console.log("number", number);
-    console.log("calc", calculations);
-    console.log(pools);
     pools.splice(0);
   });
 });
+//wpushowywanie znaków do divów oraz przypisanie ich
+
 buttons[12].addEventListener("click", function clear() {
   location.reload(true);
-});
+}); //czyszczenie inputa oraz strony
 buttons[3].addEventListener("click", function mnozenie() {
   equation.push(...number);
   equation.push(...calculations);
-  calculations.splice(0);
   number.splice(0);
   console.log("equation", equation);
   for (let i = 0; i <= equation.length - 1; i++) {
     if (typeof equation[i] === "number") {
       score += equation[i];
     }
-  }
-  equationConnectionNumbers.push(score);
-  for (let i = 0; i <= equation.length - 1; i++) {
-    if (typeof equation[i] === "string") {
-      score += equation[i];
-      equationConnectionNumbers.push(score[i]);
-    }
-  }
+  } //wpuszowywanie liczby
+  let scoreInt = parseInt(score);
+  console.log(scoreInt);
+  equationConnectionNumbers.push(scoreInt);
+  equationConnectionNumbers.push(calculations[0]);
+  console.log(score);
   console.log("ecn", equationConnectionNumbers);
+  score = "";
   equation.splice(0);
-});
+  calculations.splice(0);
+}); //funkcja mnożenia
 buttons[7].addEventListener("click", function dzielenie() {
-  console.log("num", number);
   equation.push(...number);
   equation.push(...calculations);
-  calculations.splice(0);
   number.splice(0);
   console.log("equation", equation);
   for (let i = 0; i <= equation.length - 1; i++) {
     if (typeof equation[i] === "number") {
       score += equation[i];
     }
-  }
-  equationConnectionNumbers.push(score);
+  } //wpuszowywanie liczby
+  let scoreInt = parseInt(score);
+  console.log(scoreInt);
+  equationConnectionNumbers.push(scoreInt);
+  equationConnectionNumbers.push(calculations[0]);
+  console.log(score);
   console.log("ecn", equationConnectionNumbers);
-  console.log("score", score);
-});
+  score = "";
+  equation.splice(0);
+  calculations.splice(0);
+}); //funkcja dzielenia
 buttons[11].addEventListener("click", function dodawanie() {
   equation.push(...number);
   equation.push(...calculations);
-  calculations.splice(0);
   number.splice(0);
   console.log("equation", equation);
   for (let i = 0; i <= equation.length - 1; i++) {
     if (typeof equation[i] === "number") {
       score += equation[i];
     }
-  }
-  equationConnectionNumbers.push(score);
+  } //wpuszowywanie liczby
+  let scoreInt = parseInt(score);
+  console.log(scoreInt);
+  equationConnectionNumbers.push(scoreInt);
+  equationConnectionNumbers.push(calculations[0]);
+  console.log(score);
   console.log("ecn", equationConnectionNumbers);
-  console.log("score", score);
-});
+  score = "";
+  equation.splice(0);
+  calculations.splice(0);
+}); //funkcja dodawania
 
 buttons[14].addEventListener("click", function rownanie() {
   equation.push(...number);
   equation.push(...calculations);
-  calculations.splice(0);
   number.splice(0);
   console.log("equation", equation);
   for (let i = 0; i <= equation.length - 1; i++) {
     if (typeof equation[i] === "number") {
       score += equation[i];
     }
-  }
-  equationConnectionNumbers.push(score);
+  } //wpuszowywanie liczby
+  let scoreInt = parseInt(score);
+  console.log(scoreInt);
+  equationConnectionNumbers.push(scoreInt);
+  equationConnectionNumbers.push(calculations[0]);
+  console.log(score);
   console.log("ecn", equationConnectionNumbers);
-  console.log("score", score);
-}); //problem tkwi w tablicy która posiada 2 wymiary
+  score = "";
+  equation.splice(0);
+  calculations.splice(0);
+  for (let i = 0; i <= equationConnectionNumbers.length; i++) {
+    if (equationConnectionNumbers[i] === "*") {
+      result = equationConnectionNumbers[i - 1] * equationConnectionNumbers[i + 1];
+      break;
+    }
+    if (equationConnectionNumbers[i] === "/") {
+      result = equationConnectionNumbers[i - 1] / equationConnectionNumbers[i + 1];
+      break;
+    }
+    if (equationConnectionNumbers === "-") {
+      result = equationConnectionNumbers[i - 1] - equationConnectionNumbers[i + 1];
+      break;
+    }
+    if (equationConnectionNumbers[i] === "+") {
+      result = equationConnectionNumbers[i - 1] + equationConnectionNumbers[i + 1];
+      break;
+    }
+    // if (typeof result === "number") {
+    // if (equationConnectionNumbers[i + 2] === "*") {
+    //   result1 = result * equationConnectionNumbers[i + 1];
+    //   ActionResult.push(result1);
+    // }
+    // if (equationConnectionNumbers[i + 2] === "/") {
+    //   result1 = result / equationConnectionNumbers[i + 1];
+    //   ActionResult.push(result1);
+    // }
+    // if (equationConnectionNumbers[i + 2] === "-") {
+    //   result1 = result - equationConnectionNumbers[i + 1];
+    //   ActionResult.push(result1);
+    // }
+    // if (equationConnectionNumbers[i + 2] === "+") {
+    //   result1 = result + equationConnectionNumbers[i + 1];
+    //   ActionResult.push(result1);
+    // }
+    // }
+  }
+
+  // ActionResult.push(result);
+  console.log("res1", result1);
+  console.log("res", result);
+  // console.log("RB", resultBack);
+  console.log("AR", ActionResult);
+}); //funkcja równanie (bardzo ważna)
 
 buttons[15].addEventListener("click", function odejmowanie() {
   equation.push(...number);
   equation.push(...calculations);
-  calculations.splice(0);
   number.splice(0);
   console.log("equation", equation);
   for (let i = 0; i <= equation.length - 1; i++) {
     if (typeof equation[i] === "number") {
       score += equation[i];
     }
-  }
-  equationConnectionNumbers.push(score);
+  } //wpuszowywanie liczby
+  let scoreInt = parseInt(score);
+  console.log(scoreInt);
+  equationConnectionNumbers.push(scoreInt);
+  equationConnectionNumbers.push(calculations[0]);
+  console.log(score);
   console.log("ecn", equationConnectionNumbers);
-  console.log("score", score);
-});
+  score = "";
+  equation.splice(0);
+  calculations.splice(0);
+}); //funkcja dzielenia
