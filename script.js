@@ -27,7 +27,7 @@ let numbersOfEquation = [];
 let score = "";
 let equationConnectionNumbers = [];
 let result = 0;
-let result1 = 0;
+let result1 = [];
 let equationArray = [];
 
 buttons.forEach((button) => {
@@ -135,82 +135,47 @@ buttons[14].addEventListener("click", function rownanie() {
   for (let i = 0; i <= equationConnectionNumbers.length; i++) {
     for (let j = 0; j <= equationConnectionNumbers.length; j++) {
       for (let z = 0; z <= equationConnectionNumbers.length; z++) {
-        if (equationConnectionNumbers[i] === "*") {
-          result = equationConnectionNumbers[i - 1] * equationConnectionNumbers[i + 1];
-          result1 = equationConnectionNumbers.splice(1, 2);
-          equationConnectionNumbers.unshift(result);
-          break;
-        }
-        if (equationConnectionNumbers[i] === "/") {
-          result = equationConnectionNumbers[i - 1] / equationConnectionNumbers[i + 1];
-          result1 = equationConnectionNumbers.splice(1, 2);
-          equationConnectionNumbers.unshift(result);
-          break;
-        }
-        if (equationConnectionNumbers[i] === "-") {
-          result = equationConnectionNumbers[i - 1] - equationConnectionNumbers[i + 1];
-          result1 = equationConnectionNumbers.splice(1, 2);
-          equationConnectionNumbers.unshift(result);
-          // if (equationConnectionNumbers[j] === "*") {
-          //   console.log("jpis");
-          // }
-          break;
-        }
-        if (equationConnectionNumbers[i] === "+") {
-          result = equationConnectionNumbers[i - 1] + equationConnectionNumbers[i + 1];
-          result1 = equationConnectionNumbers.splice(0, 3);
-          equationConnectionNumbers.unshift(result);
-
-          break;
-        }
-
-        if (equationConnectionNumbers[j] === "*") {
-          result = equationConnectionNumbers[j - 1] * equationConnectionNumbers[j + 1];
-          result1 = equationConnectionNumbers.splice(0, 3);
-          equationConnectionNumbers.unshift(result);
-          equationConnectionNumbers.unshift("0");
-
-          break;
-        }
-        if (equationConnectionNumbers[j] === "/") {
-          result = equationConnectionNumbers[j - 1] / equationConnectionNumbers[j + 1];
-          result1 = equationConnectionNumbers.splice(0, 3);
-          equationConnectionNumbers.unshift(result);
-          equationConnectionNumbers.unshift("0");
-
-          break;
-        }
-        if (equationConnectionNumbers[j] === "-") {
-          result = equationConnectionNumbers[j - 1] - equationConnectionNumbers[j + 1];
-          result1 = equationConnectionNumbers.splice(0, 3);
-          equationConnectionNumbers.unshift(result);
-          equationConnectionNumbers.unshift("0");
-
-          break;
-        }
-        if (equationConnectionNumbers[j] === "+") {
-          result = equationConnectionNumbers[j - 1] + equationConnectionNumbers[j + 1];
-          result1 = equationConnectionNumbers.splice(0, 3);
-          equationConnectionNumbers.unshift(result);
-          equationConnectionNumbers.unshift("0");
-
-          break;
-        }
-        if (equationConnectionNumbers[z + 4] === "*") {
-          equationConnectionNumbers.splice(2, 3);
-          break;
-        }
-        if (equationConnectionNumbers[z + 4] === "/") {
-          equationConnectionNumbers.splice(2, 3);
-          break;
-        }
-        if (equationConnectionNumbers[z + 4] === "+") {
-          equationConnectionNumbers.splice(2, 3);
-          break;
-        }
-        if (equationConnectionNumbers[z + 4] === "-") {
-          equationConnectionNumbers.splice(2, 3);
-          break;
+        for (let y = 0; y <= equationConnectionNumbers.length; y++) {
+          if (equationConnectionNumbers[i] === "*") {
+            result = equationConnectionNumbers[i - 1] * equationConnectionNumbers[i + 1];
+            result1 = equationConnectionNumbers.splice(0, 3);
+            equationConnectionNumbers.unshift(result);
+            break;
+          }
+          if (equationConnectionNumbers[i] === "/") {
+            result = equationConnectionNumbers[i - 1] / equationConnectionNumbers[i + 1];
+            result1 = equationConnectionNumbers.splice(0, 3);
+            equationConnectionNumbers.unshift(result);
+            break;
+          }
+          if (equationConnectionNumbers[i] === "-") {
+            result = equationConnectionNumbers[i - 1] - equationConnectionNumbers[i + 1];
+            result1 = equationConnectionNumbers.splice(0, 3);
+            equationConnectionNumbers.unshift(result);
+            break;
+          }
+          if (equationConnectionNumbers[i] === "+") {
+            result = equationConnectionNumbers[i - 1] + equationConnectionNumbers[i + 1];
+            result1 = equationConnectionNumbers.splice(0, 3);
+            equationConnectionNumbers.unshift(result);
+            break;
+          }
+          if (equationConnectionNumbers[i + 2] === "*") {
+            equationConnectionNumbers.splice(1, 2);
+            break;
+          }
+          if (equationConnectionNumbers[i + 2] === "/") {
+            equationConnectionNumbers.splice(1, 2);
+            break;
+          }
+          if (equationConnectionNumbers[i + 2] === "+") {
+            equationConnectionNumbers.splice(1, 2);
+            break;
+          }
+          if (equationConnectionNumbers[i + 2] === "-") {
+            equationConnectionNumbers.splice(1, 2);
+            break;
+          }
         }
       }
     }
