@@ -27,6 +27,8 @@ let numbersOfEquation = [];
 let score = "";
 let equationConnectionNumbers = [];
 let result = 0;
+let result1 = 0;
+let equationArray = [];
 
 buttons.forEach((button) => {
   button.addEventListener("click", (evt) => {
@@ -132,65 +134,92 @@ buttons[14].addEventListener("click", function rownanie() {
   calculations.splice(0);
   for (let i = 0; i <= equationConnectionNumbers.length; i++) {
     for (let j = 0; j <= equationConnectionNumbers.length; j++) {
-      if (equationConnectionNumbers[i] === "*") {
-        result = equationConnectionNumbers[i - 1] * equationConnectionNumbers[i + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
-        equationConnectionNumbers.unshift(result);
-        break;
-      }
-      if (equationConnectionNumbers[i] === "/") {
-        result = equationConnectionNumbers[i - 1] / equationConnectionNumbers[i + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
-        equationConnectionNumbers.unshift(result);
-        break;
-      }
-      if (equationConnectionNumbers[i] === "-") {
-        result = equationConnectionNumbers[i - 1] - equationConnectionNumbers[i + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
-        equationConnectionNumbers.unshift(result);
-        break;
-      }
-      if (equationConnectionNumbers[i] === "+") {
-        result = equationConnectionNumbers[i - 1] + equationConnectionNumbers[i + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
-        equationConnectionNumbers.unshift(result);
-        break;
-      }
+      for (let z = 0; z <= equationConnectionNumbers.length; z++) {
+        if (equationConnectionNumbers[i] === "*") {
+          result = equationConnectionNumbers[i - 1] * equationConnectionNumbers[i + 1];
+          result1 = equationConnectionNumbers.splice(1, 2);
+          equationConnectionNumbers.unshift(result);
+          break;
+        }
+        if (equationConnectionNumbers[i] === "/") {
+          result = equationConnectionNumbers[i - 1] / equationConnectionNumbers[i + 1];
+          result1 = equationConnectionNumbers.splice(1, 2);
+          equationConnectionNumbers.unshift(result);
+          break;
+        }
+        if (equationConnectionNumbers[i] === "-") {
+          result = equationConnectionNumbers[i - 1] - equationConnectionNumbers[i + 1];
+          result1 = equationConnectionNumbers.splice(1, 2);
+          equationConnectionNumbers.unshift(result);
+          // if (equationConnectionNumbers[j] === "*") {
+          //   console.log("jpis");
+          // }
+          break;
+        }
+        if (equationConnectionNumbers[i] === "+") {
+          result = equationConnectionNumbers[i - 1] + equationConnectionNumbers[i + 1];
+          result1 = equationConnectionNumbers.splice(0, 3);
+          equationConnectionNumbers.unshift(result);
 
-      if (equationConnectionNumbers[j] === "*") {
-        result = equationConnectionNumbers[j - 1] * equationConnectionNumbers[j + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
-        equationConnectionNumbers.unshift(result);
+          break;
+        }
 
-        break;
-      }
-      if (equationConnectionNumbers[j] === "/") {
-        result = equationConnectionNumbers[j - 1] / equationConnectionNumbers[j + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
+        if (equationConnectionNumbers[j] === "*") {
+          result = equationConnectionNumbers[j - 1] * equationConnectionNumbers[j + 1];
+          result1 = equationConnectionNumbers.splice(0, 3);
+          equationConnectionNumbers.unshift(result);
+          equationConnectionNumbers.unshift("0");
 
-        equationConnectionNumbers.unshift(result);
-        break;
-      }
-      if (equationConnectionNumbers[j] === "-") {
-        result = equationConnectionNumbers[j - 1] - equationConnectionNumbers[j + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
-        equationConnectionNumbers.unshift(result);
-        break;
-      }
-      if (equationConnectionNumbers[j] === "+") {
-        result = equationConnectionNumbers[j - 1] + equationConnectionNumbers[j + 1];
-        result1 = equationConnectionNumbers.splice(0, 3);
-        equationConnectionNumbers.unshift(result);
-        break;
+          break;
+        }
+        if (equationConnectionNumbers[j] === "/") {
+          result = equationConnectionNumbers[j - 1] / equationConnectionNumbers[j + 1];
+          result1 = equationConnectionNumbers.splice(0, 3);
+          equationConnectionNumbers.unshift(result);
+          equationConnectionNumbers.unshift("0");
+
+          break;
+        }
+        if (equationConnectionNumbers[j] === "-") {
+          result = equationConnectionNumbers[j - 1] - equationConnectionNumbers[j + 1];
+          result1 = equationConnectionNumbers.splice(0, 3);
+          equationConnectionNumbers.unshift(result);
+          equationConnectionNumbers.unshift("0");
+
+          break;
+        }
+        if (equationConnectionNumbers[j] === "+") {
+          result = equationConnectionNumbers[j - 1] + equationConnectionNumbers[j + 1];
+          result1 = equationConnectionNumbers.splice(0, 3);
+          equationConnectionNumbers.unshift(result);
+          equationConnectionNumbers.unshift("0");
+
+          break;
+        }
+        if (equationConnectionNumbers[z + 4] === "*") {
+          equationConnectionNumbers.splice(2, 3);
+          break;
+        }
+        if (equationConnectionNumbers[z + 4] === "/") {
+          equationConnectionNumbers.splice(2, 3);
+          break;
+        }
+        if (equationConnectionNumbers[z + 4] === "+") {
+          equationConnectionNumbers.splice(2, 3);
+          break;
+        }
+        if (equationConnectionNumbers[z + 4] === "-") {
+          equationConnectionNumbers.splice(2, 3);
+          break;
+        }
       }
     }
   }
   textPool.value = result;
+  console.log("EA", equationArray);
   console.log("res1", result1);
   console.log("ecn2", equationConnectionNumbers);
   console.log("res", result);
-  // console.log("RB", resultBack);
-  // console.log("AR", ActionResult);
 }); //funkcja równanie (bardzo ważna)
 
 buttons[15].addEventListener("click", function odejmowanie() {
