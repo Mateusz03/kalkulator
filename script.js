@@ -113,7 +113,18 @@ buttons[14].addEventListener("click", function rownanie() {
   score = "";
   equation.splice(0);
   calculations.splice(0);
-  console.log(equationConnectionNumbers);
+  let helper = [];
+  let firstcharacter = [];
+  for (let i = 0; i <= equationConnectionNumbers.length; i++) {
+    if (equationConnectionNumbers[i] === "-" || equationConnectionNumbers[i] === "+") {
+      if (equationConnectionNumbers[i + 2] === "*" || equationConnectionNumbers[i + 2] === "/") {
+        helper = equationConnectionNumbers.splice(2, 3);
+        firstcharacter = equationConnectionNumbers.splice(1, 1);
+        equationConnectionNumbers.unshift(...firstcharacter);
+        equationConnectionNumbers.unshift(...helper);
+      }
+    }
+  }
   for (let i = 0; i <= equationConnectionNumbers.length; i++) {
     for (let j = 0; j <= equationConnectionNumbers.length; j++) {
       for (let z = 0; z <= equationConnectionNumbers.length; z++) {
@@ -142,19 +153,12 @@ buttons[14].addEventListener("click", function rownanie() {
             equationConnectionNumbers.unshift(result);
             break;
           }
-          if (equationConnectionNumbers[i + 2] === "*") {
-            equationConnectionNumbers.splice(1, 2);
-            break;
-          }
-          if (equationConnectionNumbers[i + 2] === "/") {
-            equationConnectionNumbers.splice(1, 2);
-            break;
-          }
-          if (equationConnectionNumbers[i + 2] === "+") {
-            equationConnectionNumbers.splice(1, 2);
-            break;
-          }
-          if (equationConnectionNumbers[i + 2] === "-") {
+          if (
+            equationConnectionNumbers[i + 2] === "*" ||
+            equationConnectionNumbers[i + 2] === "/" ||
+            equationConnectionNumbers[i + 2] === "+" ||
+            equationConnectionNumbers[i + 2] === "-"
+          ) {
             equationConnectionNumbers.splice(1, 2);
             break;
           }
@@ -162,10 +166,6 @@ buttons[14].addEventListener("click", function rownanie() {
       }
     }
   }
-  console.log(result);
-  console.log("res1", result1);
-  console.log(equationConnectionNumbers);
-
   if (isNaN(result)) {
     result = "Błąd!";
   }
