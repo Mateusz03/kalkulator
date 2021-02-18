@@ -1,5 +1,7 @@
 body {
   background-color: #333333;
+  width: 328px;
+  margin: 0 auto;
 }
 #container {
   margin: 0 auto;

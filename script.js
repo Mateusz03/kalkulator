@@ -115,16 +115,35 @@ buttons[14].addEventListener("click", function rownanie() {
   calculations.splice(0);
   let helper = [];
   let firstcharacter = [];
-  for (let i = 0; i <= equationConnectionNumbers.length; i++) {
-    if (equationConnectionNumbers[i] === "-" || equationConnectionNumbers[i] === "+") {
-      if (equationConnectionNumbers[i + 2] === "*" || equationConnectionNumbers[i + 2] === "/") {
-        helper = equationConnectionNumbers.splice(2, 3);
-        firstcharacter = equationConnectionNumbers.splice(1, 1);
-        equationConnectionNumbers.unshift(...firstcharacter);
-        equationConnectionNumbers.unshift(...helper);
-      }
-    }
-  }
+  console.log("ecn1", equationConnectionNumbers);
+  // for (let i = 0; i <= equationConnectionNumbers.length; i++) {
+  //   if (equationConnectionNumbers[i] === "-" || equationConnectionNumbers[i] === "+") {
+  //     if (equationConnectionNumbers[i + 2] === "*" || equationConnectionNumbers[i + 2] === "/") {
+  //       if (equationConnectionNumbers[i + 4] === "*" || equationConnectionNumbers[i + 4] === "/") {
+  //         if (equationConnectionNumbers[i + 6] === "*" || equationConnectionNumbers[i + 6] === "/") {
+  //           helper = equationConnectionNumbers.splice(2, 7);
+  //           firstcharacter = equationConnectionNumbers.splice(1, 1);
+  //           equationConnectionNumbers.unshift(...firstcharacter);
+  //           equationConnectionNumbers.unshift(...helper);
+  //           break;
+  //         }
+  //         helper = equationConnectionNumbers.splice(2, 5);
+  //         firstcharacter = equationConnectionNumbers.splice(1, 1);
+  //         equationConnectionNumbers.unshift(...firstcharacter);
+  //         equationConnectionNumbers.unshift(...helper);
+  //         break;
+  //       }
+  //     }
+  //     helper = equationConnectionNumbers.splice(2, 3);
+  //     firstcharacter = equationConnectionNumbers.splice(1, 1);
+  //     equationConnectionNumbers.unshift(...firstcharacter);
+  //     equationConnectionNumbers.unshift(...helper);
+  //     break;
+  //   }
+  // } // ustawienie liczb
+  console.log(equationConnectionNumbers);
+  console.log(helper);
+  console.log(firstcharacter);
   for (let i = 0; i <= equationConnectionNumbers.length; i++) {
     for (let j = 0; j <= equationConnectionNumbers.length; j++) {
       for (let z = 0; z <= equationConnectionNumbers.length; z++) {
